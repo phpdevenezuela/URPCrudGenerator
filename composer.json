@@ -1,5 +1,5 @@
 {
-    "name": "oteroweb/entrustcrudgenerator",
+    "name": "oteroweb/urpcrudGenerator",
     "description": "GUI and CRUD System for Entrust",
     "type": "library",
     "license": "MIT",
