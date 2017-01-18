@@ -1,0 +1,23 @@
+{
+    "name": "oteroweb/EntrustCrudGenerator",
+    "description": "GUI and CRUD System for Entrust",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "oteroweb",
+            "email": "oterolopez1990@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.0",
+        "oteroweb/EntrustCrudGenerator": "dev-master"
+    },
+    "autoload": {
+      "psr-4": {
+            "oteroweb\\EntrustCrudGenerator\\": "src"
+
+        }
+    }
+}
