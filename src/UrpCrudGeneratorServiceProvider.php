@@ -1,7 +1,8 @@
 <?php
-namespace oteroweb\EntrustCrudGenerator;
+namespace oteroweb\UrpCrudGenerator;
 use Illuminate\Support\ServiceProvider;
-class EntrustCrudGeneratorProvider extends ServiceProvider
+
+class UrpCrudGeneratorServiceProvider extends ServiceProvider
 {
     /**
      * Perform post-registration booting of services.
@@ -13,15 +14,15 @@ class EntrustCrudGeneratorProvider extends ServiceProvider
 	
 		// Config
 		$this->publishes([
-			__DIR__ . '/../src/config/EntrustCrudGenerator.php' => config_path('EntrustCrudGenerator.php'),
+			__DIR__ . '/../src/config/UrpCrudGenerator.php' => config_path('UrpCrudGenerator.php'),
 		], 'config');
 		
 		
 		// Views
-		$this->loadViewsFrom(__DIR__.'/../src/views', 'EntrustCrudGenerator');
+		$this->loadViewsFrom(__DIR__.'/../src/views', 'UrpCrudGenerator');
 		
 		$this->publishes([
-			__DIR__.'/../src/views' => resource_path('views/vendor/EntrustCrudGenerator'),
+			__DIR__.'/../src/views' => resource_path('views/vendor/UrpCrudGenerator'),
 		], 'views');
     }
     /**

@@ -15,7 +15,7 @@
     },
     "autoload": {
       "psr-4": {
-            "oteroweb\\EntrustCrudGenerator\\": "src"
+            "oteroweb\\UrpCrudGenerator\\": "src"
 
         }
     }
