@@ -1,12 +1,12 @@
-<?php
-namespace oteroweb\EntrustCrudGenerator;
+<?php 
+namespace oteroweb\UrpCrudGenerator;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Auth;
 /**
- * Class EntrustCrudGenerator
+ * Class UrpCrudGenerator
  */
-class EntrustCrudGenerator {
+class UrpCrudGenerator {
     /**
      * @var string
      */
@@ -20,8 +20,8 @@ class EntrustCrudGenerator {
 	
     public function __construct()
 	{ 
-// para cargar variables del archivo config/EntrustCrudGenerator 
-		// $this->private_key = config('EntrustCrudGenerator.var');
+// para cargar variables del archivo config/UrpCrudGenerator 
+		// $this->private_key = config('UrpCrudGenerator.var');
     }
 	
     /**
@@ -29,7 +29,7 @@ class EntrustCrudGenerator {
      *
      * @return array
      */
-	public function NewBalance() 	{
+	public function test() 	{
 
 		echo "function de prueba";
 	}
