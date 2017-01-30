@@ -1,6 +1,5 @@
 <?php
-
-namespace App\Http\Controllers;
+namespace oteroweb\UrpCrudGenerator;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -8,7 +7,7 @@ use App\Role;
 use App\Permission;
 use DB;
 
-class RoleController extends Controller
+trait RoleController
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +17,7 @@ class RoleController extends Controller
     public function index(Request $request)
     {
         $roles = Role::orderBy('id')->paginate(5);
-        return view('admin.roles.index',compact('roles'))
+        return view('vendor.UrpCrudGenerator.admin.roles.index',compact('roles'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
@@ -30,7 +29,7 @@ class RoleController extends Controller
     public function create()
     {
         $permission = Permission::get();
-        return view('admin.roles.create',compact('permission'));
+        return view('vendor.UrpCrudGenerator.admin.roles.create',compact('permission'));
     }
 
     /**
@@ -58,7 +57,7 @@ class RoleController extends Controller
             $role->attachPermission($value);
         }
 
-        return redirect()->route('admin.roles.index')
+        return redirect()->route('vendor.UrpCrudGenerator.admin.roles.index')
                         ->with('success','Role created successfully');
     }
     /**
@@ -74,7 +73,7 @@ class RoleController extends Controller
             ->where("permission_role.role_id",$id)
             ->get();
 
-        return view('admin.roles.show',compact('role','rolePermissions'));
+        return view('vendor.UrpCrudGenerator.admin.roles.show',compact('role','rolePermissions'));
     }
 
     /**
@@ -90,7 +89,7 @@ class RoleController extends Controller
         $rolePermissions = DB::table("permission_role")->where("permission_role.role_id",$id)
             ->pluck('permission_role.permission_id');
         $rolePermissions = $rolePermissions->toArray();
-        return view('admin.roles.edit',compact('role','permission','rolePermissions'));
+        return view('vendor.UrpCrudGenerator.admin.roles.edit',compact('role','permission','rolePermissions'));
     }
 
     /**
@@ -120,7 +119,7 @@ class RoleController extends Controller
             $role->attachPermission($value);
         }
 
-        return redirect()->route('admin.roles.index')
+        return redirect()->route('vendor.UrpCrudGenerator.admin.roles.index')
                         ->with('success','Role updated successfully');
     }
     /**
@@ -132,7 +131,7 @@ class RoleController extends Controller
     public function destroy($id)
     {
         DB::table("roles")->where('id',$id)->delete();
-        return redirect()->route('admin.roles.index')
+        return redirect()->route('vendor.UrpCrudGenerator.admin.roles.index')
                         ->with('success','Role deleted successfully');
     }
 }

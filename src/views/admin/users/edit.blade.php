@@ -7,7 +7,7 @@
 	            <h2>Edit New User</h2>
 	        </div>
 	        <div class="pull-right">
-	            <a class="btn btn-primary" href="{{ route('admin.users.index') }}"> Back</a>
+	            <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
 	        </div>
 	    </div>
 	</div>
@@ -21,7 +21,7 @@
 			</ul>
 		</div>
 	@endif
-	{!! Form::model($user, ['method' => 'PATCH','route' => ['admin.users.update', $user->id]]) !!}
+	{!! Form::model($user, ['method' => 'PATCH','route' => ['users.update', $user->id]]) !!}
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
