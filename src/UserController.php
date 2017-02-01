@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace oteroweb\UrpCrudGenerator;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -11,8 +11,9 @@ use Hash;
 
 
 
-class UserController extends Controller
+trait UserController
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -21,7 +22,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $data = User::orderBy('id','DESC')->paginate(5);
-        return view('admin.users.index',compact('data'))
+        return view('vendor.UrpCrudGenerator.admin.users.index',compact('data'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
@@ -33,7 +34,7 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::pluck('display_name','id');
-        return view('admin.users.create',compact('roles'));
+        return view('vendor.UrpCrudGenerator.admin.users.create',compact('roles'));
     }
 
     /**
@@ -59,7 +60,7 @@ class UserController extends Controller
             $user->attachRole($value);
         }
 
-        return redirect()->route('admin.users.index')
+        return redirect()->route('vendor.UrpCrudGenerator.admin.users.index')
                         ->with('success','User created successfully');
     }
 
@@ -72,7 +73,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return view('admin.users.show',compact('user'));
+        return view('vendor.UrpCrudGenerator.admin.users.show',compact('user'));
     }
 
     /**
@@ -87,7 +88,7 @@ class UserController extends Controller
         $roles = Role::pluck('display_name','id');
         $userRole = $user->roles->pluck('id','id')->toArray();
 
-        return view('admin.users.edit',compact('user','roles','userRole'));
+        return view('vendor.UrpCrudGenerator.admin.users.edit',compact('user','roles','userRole'));
     }
 
     /**
@@ -122,7 +123,7 @@ class UserController extends Controller
             $user->attachRole($value);
         }
 
-        return redirect()->route('admin.users.index')
+        return redirect()->route('vendor.UrpCrudGenerator.admin.users.index')
                         ->with('success','User updated successfully');
     }
 
@@ -135,7 +136,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::find($id)->delete();
-        return redirect()->route('admin.users.index')
+        return redirect()->route('vendor.UrpCrudGenerator.admin.users.index')
                         ->with('success','User deleted successfully');
     }
 }
